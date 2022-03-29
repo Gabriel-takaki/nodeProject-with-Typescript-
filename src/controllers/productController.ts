@@ -15,4 +15,12 @@ export default class ProductController {
     console.log(allProducts);
     return res.status(200).json(allProducts);
   }
+
+  public async createProduct(req: Request, res: Response): Promise<Response> {
+    const { name, amount } = req.body; 
+    const newUser: Product = await this.productModel.create({ name, amount });
+    return res.status(201).json({ item: newUser });
+  }
 }
+
+// fazendo tudo no controller sem service

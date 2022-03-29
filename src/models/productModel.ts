@@ -1,4 +1,4 @@
-import { Pool, RowDataPacket } from 'mysql2/promise';
+import { Pool, ResultSetHeader, RowDataPacket } from 'mysql2/promise';
 import Product from '../interfaces/product.interface';
 
 export default class ProductModel {
@@ -12,5 +12,13 @@ export default class ProductModel {
     );
 
     return allProducts as Product[];
+  }
+  
+  public async create({ name, amount }: Product): Promise<Product> {
+    const [{ insertId: id }] = await this.connection.execute<ResultSetHeader>(
+      'INSERT INTO Trybesmith.Products (name, amount) VALUES (?, ?)',
+      [name, amount],
+    );
+    return { id, name, amount };
   }
 } 
