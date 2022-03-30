@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import Product from '../interfaces/product.interface';
 
-export default class Verify {
+export default class VerifyProduct {
   public nameVerify = (req: Request, res: Response, next: NextFunction): Response | undefined => {
     const { name }: Product = req.body;
     if (!name) return res.status(400).json({ error: 'Name is required' });

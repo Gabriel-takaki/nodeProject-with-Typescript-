@@ -1,10 +1,10 @@
 import { Request, Response, Router } from 'express';
 import ProductController from '../controllers/productController';
-import Verify from '../middleWares/validationProduct';
+import VerifyProducts from '../middleWares/validationProduct';
 
 const productRouter = Router();
 const productController = new ProductController();
-const verify = new Verify();
+const verify = new VerifyProducts();
 
 productRouter.get(
   '/',
