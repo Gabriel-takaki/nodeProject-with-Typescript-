@@ -18,8 +18,8 @@ export default class ProductController {
 
   public async createProduct(req: Request, res: Response): Promise<Response> {
     const { name, amount } = req.body; 
-    const newUser: Product = await this.productModel.create({ name, amount });
-    return res.status(201).json({ item: newUser });
+    const newProduct: Product = await this.productModel.create({ name, amount });
+    return res.status(201).json({ item: newProduct });
   }
 }
 
